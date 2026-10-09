@@ -8,7 +8,7 @@ interface SortDropdownProps {
 export default function SortDropdown({ value, onChange }: SortDropdownProps) {
     return (
         <select
-            className="select select-bordered select-sm"
+            className="select select-sm bg-white border border-gray-200 rounded-full px-4 font-normal text-gray-600 focus:outline-none focus:border-gray-400 transition-colors"
             value={value}
             onChange={(e) => onChange(e.target.value)}
         >

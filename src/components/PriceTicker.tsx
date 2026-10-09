@@ -22,28 +22,27 @@ export default function PriceTicker() {
         piece: "পিস",
     };
 
-    // দুইবার repeat করি smooth infinite scroll এর জন্য
     const tickerItems = [...products, ...products];
 
     return (
-        <div className="bg-gray-50 border-t border-gray-100 overflow-hidden">
-            <div className="animate-marquee whitespace-nowrap py-1.5 flex">
+        <div className="bg-white border-t border-gray-100 overflow-hidden">
+            <div className="animate-marquee whitespace-nowrap py-2 flex">
                 {tickerItems.map((product, index) => (
                     <span
                         key={`${index}`}
-                        className="inline-flex items-center gap-1.5 mx-4 text-sm"
+                        className="inline-flex items-center gap-2 mx-5 text-sm"
                     >
-                        <span>{product.image}</span>
-                        <span className="font-medium text-gray-700">{product.nameBn}</span>
-                        <span className="text-gray-500">
+                        <span className="opacity-90">{product.image}</span>
+                        <span className="font-medium text-gray-800">{product.nameBn}</span>
+                        <span className="text-gray-400">
                             {formatPrice(product.today)} টাকা/{unitMap[product.unit] || product.unit}
                         </span>
                         <span
-                            className={`font-semibold ${product.change.dir === "up"
-                                    ? "text-red-500"
+                            className={`font-medium ${product.change.dir === "up"
+                                    ? "text-rose-500"
                                     : product.change.dir === "down"
-                                        ? "text-green-500"
-                                        : "text-gray-400"
+                                        ? "text-emerald-600"
+                                        : "text-gray-300"
                                 }`}
                         >
                             {product.change.dir === "up"
