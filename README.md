@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BazarDor — Bangladesh Daily Market Price Tracker
 
-## Getting Started
+A modern web application for tracking the daily prices of essential commodities across Bangladesh.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**BazarDor** is a web application designed to help users explore daily market prices of essential commodities in Bangladesh. It provides price information for products such as rice, lentils, cooking oil, vegetables, fish, meat, eggs, milk, and spices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Users can explore minimum and maximum prices across different markets, monitor price fluctuations, and browse products by category. BazarDor aims to make market price information more accessible and help consumers make informed purchasing decisions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Price Dashboard** — Explore products with increasing and decreasing prices.
+* **Market-Based Pricing** — View minimum and maximum prices across different markets in Bangladesh.
+* **Secure Authentication** — Sign up and sign in using email and password, Google, or GitHub.
+* **Category Filtering** — Browse products by category.
+* **Price Sorting** — Sort products based on their prices.
+* **Responsive Design** — Access the application seamlessly on mobile phones, tablets, and desktop devices.
+* **Price Comparison** — Compare product prices across available markets.
+* **Product Categories** — Explore rice, lentils, oil, vegetables, fish, meat, eggs, milk, spices, and other essential commodities.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Technology                                     | Purpose                               |
+| ---------------------------------------------- | ------------------------------------- |
+| [Next.js 16](https://nextjs.org/)              | Full-stack React framework            |
+| [TypeScript](https://www.typescriptlang.org/)  | Type-safe development                 |
+| [Tailwind CSS v4](https://tailwindcss.com/)    | Utility-first styling                 |
+| [DaisyUI](https://daisyui.com/)                | UI component library                  |
+| [Better Auth](https://www.better-auth.com/)    | Authentication and session management |
+| [MongoDB Atlas](https://www.mongodb.com/atlas) | Cloud database                        |
+| [Vercel](https://vercel.com/)                  | Deployment and hosting                |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Live Demo
 
-## Deploy on Vercel
+**Live Application:** [BazarDor](https://your-deployment-link.vercel.app)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Future Improvements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Potential enhancements for BazarDor include:
+
+* Historical price charts and trends.
+* Market-wise price comparison.
+* Search with advanced filters.
+* User-submitted price reports with verification.
+* Price alerts for selected commodities.
+* Location-based market recommendations.
+* A Bengali-language interface.

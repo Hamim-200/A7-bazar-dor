@@ -16,7 +16,6 @@ async function getProducts(): Promise<Product[]> {
 
 export default async function HomePage() {
   const products = await getProducts();
-
   return (
     <>
       <Hero />
