@@ -16,7 +16,7 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        fetch("https://api.api-store.workers.dev/api/bazardor/categories")
+        fetch("https://openapi.programming-hero.com/api/bazardor/categories")
             .then((res) => res.json())
             .then((data) => setCategories(data))
             .catch((err) => console.error("Error fetching categories:", err));
