@@ -18,7 +18,8 @@ export const dynamic = "force-dynamic";
 async function getProduct(slug: string): Promise<Product | null> {
   try {
     const res = await fetch(
-      "https://api.api-store.workers.dev/api/bazardor/products",
+      // "https://api.api-store.workers.dev/api/bazardor/products",
+      "https://openapi.programming-hero.com/api/bazardor/products",
       { cache: "no-store" }
     );
     if (!res.ok) return null;
