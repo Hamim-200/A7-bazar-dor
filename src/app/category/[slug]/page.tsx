@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
@@ -18,17 +17,19 @@ export default function CategoryPage() {
   const [sortBy, setSortBy] = useState("default");
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
+    // setLoading(true);
+    // setError(false);
 
     Promise.all([
       fetch(
+
         `https://openapi.programming-hero.com/api/bazardor/products?category=${slug}`
       ).then((res) => {
         if (!res.ok) throw new Error("Products fetch failed");
         return res.json();
       }),
       fetch(
+
         `https://openapi.programming-hero.com/api/bazardor/categories/${slug}`
       ).then((res) => {
         if (!res.ok) throw new Error("Category fetch failed");
@@ -50,33 +51,37 @@ export default function CategoryPage() {
       });
   }, [slug]);
 
+  // Sort products — numeric value িদেয় sort করেব, Bengali numeral নয় 
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === "price-asc") return a.today - b.today;
     if (sortBy === "price-desc") return b.today - a.today;
-    return 0;
+    return 0; // default — API order 
   });
 
+  // Loading State — Skeleton 
   if (loading) {
     return (
-      <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
-        <div className="skeleton h-8 w-48 mb-3 rounded-lg bg-gray-100"></div>
-        <div className="skeleton h-4 w-32 mb-8 rounded-lg bg-gray-100"></div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="skeleton h-8 w-48 mb-2"></div>
+        <div className="skeleton h-4 w-32 mb-6"></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 
+lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="card bg-white border border-gray-100 rounded-2xl p-5">
+            <div key={i} className="card bg-white border p-4">
               <div className="flex items-center gap-3 mb-4">
-                <div className="skeleton w-12 h-12 rounded-full bg-gray-100"></div>
+                <div className="skeleton w-12 h-12 
+rounded-full"></div>
                 <div className="space-y-2 flex-1">
-                  <div className="skeleton h-4 w-24 bg-gray-100"></div>
-                  <div className="skeleton h-3 w-16 bg-gray-100"></div>
+                  <div className="skeleton h-4 w-24"></div>
+                  <div className="skeleton h-3 w-16"></div>
                 </div>
               </div>
               <div className="flex justify-between items-end">
                 <div className="space-y-1">
-                  <div className="skeleton h-3 w-16 bg-gray-100"></div>
-                  <div className="skeleton h-6 w-20 bg-gray-100"></div>
+                  <div className="skeleton h-3 w-16"></div>
+                  <div className="skeleton h-6 w-20"></div>
                 </div>
-                <div className="skeleton h-5 w-14 bg-gray-100"></div>
+                <div className="skeleton h-5 w-14"></div>
               </div>
             </div>
           ))}
@@ -85,39 +90,49 @@ export default function CategoryPage() {
     );
   }
 
+  // Error / Empty State — 404 type 
   if (error || products.length === 0) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-6">
-        <div className="text-6xl mb-5 opacity-90">😢</div>
-        <h2 className="text-2xl font-semibold text-gray-900 tracking-tight mb-2">
-          কোনো পণ্য পাওয়া যায়নি
+      <div className="min-h-[60vh] flex flex-col items-center 
+justify-center text-center px-4">
+        <div className="text-6xl mb-4">
+          😢
+        </div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">
+          কােনা পণ্য পাওয়া যায়িন
         </h2>
-        <p className="text-gray-500 mb-8 leading-relaxed">
-          এই ক্যাটাগরিতে কোনো পণ্য নেই অথবা ক্যাটাগরিটি সঠিক নয়।
+        <p className="text-gray-500 mb-6">
+          এই ক্যাটাগিরেত কােনা পণ্য নই অথবা ক্যাটাগিরটি সঠিক নয়।
         </p>
-        <Link href="/" className="btn btn-neutral font-medium rounded-full px-6">
-          হোম পেজে ফিরে যান
+        <Link href="/" className="btn btn-success text-white">
+          হাম পেজ িফের যান
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12 md:py-16">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center 
+sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 tracking-tight flex items-center gap-3">
-            <span className="opacity-90">{category?.icon}</span>
+          <h1 className="text-2xl font-bold text-gray-800 flex 
+items-center gap-2">
+            <span>{category?.icon}</span>
             {category?.nameBn}
           </h1>
-          <p className="text-gray-500 text-sm mt-2">
-            এই ক্যাটাগরিতে মোট {products.length}টি পণ্য
+          <p className="text-gray-500 text-sm mt-1">
+            এই ক্যাটাগিরেত মাট {products.length}টি পণ্য
           </p>
         </div>
+        {/* Sort Dropdown (C1 Challenge) */}
         <SortDropdown value={sortBy} onChange={setSortBy} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 
+lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
